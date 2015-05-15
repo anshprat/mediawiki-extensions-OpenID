@@ -38,6 +38,7 @@ $messages['en'] = array(
 	'openidxrds' => 'Yadis file',
 	'openidconvert' => 'OpenID converter',
 	'openiderror' => 'Verification error',
+	'jiogrouperror' => 'The openid used is not a part of any Jiocloud groups. Please contact your manager for inclusion',
 	'openiderrortext' => 'An error occured during verification of the OpenID URL.',
 	'openidconfigerror' => 'OpenID configuration error',
 	'openidconfigerrortext' => 'The OpenID storage configuration for this wiki is invalid.

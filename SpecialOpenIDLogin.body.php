@@ -168,6 +168,7 @@ class SpecialOpenIDLogin extends SpecialOpenID {
 	function chooseNameForm( $openid, $sreg, $ax, $messagekey = null ) {
 		global $wgOut, $wgOpenIDAllowExistingAccountSelection, $wgAllowRealName, $wgUser;
 		global $wgOpenIDProposeUsernameFromSREG, $wgOpenIDAllowAutomaticUsername, $wgOpenIDAllowNewAccountname;
+		
 
 		if ( $messagekey ) {
 			$wgOut->addWikiMsg( $messagekey );
@@ -346,11 +347,63 @@ class SpecialOpenIDLogin extends SpecialOpenID {
 	}
 
 	/**
+	 * Check if the user is a part of jiocloud groups on launcpad
+	 */
+	function checkJioMember($idname) {
+		$jiocloud_groups = array('jiocloud',
+							'jiocloud-qa'
+		);
+		if (substr($idname, 0, 1) == '~'){
+			$idname = substr($idname,1);
+		}
+		foreach ($jiocloud_groups as $group) {
+			$url = "https://api.launchpad.net/1.0/~".$group."/+member/".$idname;
+			$res = $this->_curl($url);
+			$res_array = json_decode($res, true);
+			if ($res_array['status'] == 'Approved'){
+				return true;
+			}
+		} 
+		/**
+		 * If it has not returned true yet, then the user is either not a member
+		 * or membership status is not Approved
+		 */
+		return false;
+	}
+	
+	function _curl($url){
+		$options = array(CURLOPT_URL => $url,
+					CURLOPT_HEADER => false,
+					CURLOPT_RETURNTRANSFER => true,
+					
+		);
+		$ch = curl_init();
+		curl_setopt_array($ch, $options);
+		if( ! $result = curl_exec($ch))
+		{
+			trigger_error(curl_error($ch));
+		}
+		curl_close($ch);
+		return $result;
+		
+	}
+	
+	/**
 	 * Handle "Choose name" form submission
 	 */
 	function chooseName() {
+		
 		global $wgRequest, $wgUser, $wgOut;
 		list( $openid, $sreg, $ax ) = $this->fetchValues();
+		$idname = $this->toUserName( $openid );
+		$is_jio_member = $this->checkJioMember($idname);
+		if ($is_jio_member == false ){
+			wfDebug( "User is not a member of Jiocloud groups" );
+			$this->clearValues();
+			# No messing around, here
+			$wgOut->showErrorPage( 'openiderror', 'jiogrouperror' );
+			return;
+		}
 		if ( is_null( $openid ) ) {
 			wfDebug( "OpenID: aborting in ChooseName because identity_url is missing\n" );
 			$this->clearValues();
@@ -462,6 +515,17 @@ class SpecialOpenIDLogin extends SpecialOpenID {
 				$wgOut->showErrorPage( 'openiderror', 'openiderrortext' );
 				return;
 			}
+			
+			$idname = $this->toUserName( $openid );
+			$is_jio_member = $this->checkJioMember($idname);
+			if ($is_jio_member == false ){
+				wfDebug( "User is not a member of Jiocloud groups" );
+				$this->clearValues();
+				# No messing around, here
+				$wgOut->showErrorPage( 'openiderror', 'jiogrouperror' );
+				return;
+			}
+				
 
 			$user = self::getUserFromUrl( $openid );
 
