@@ -90,10 +90,7 @@ class OpenIDProvider {
 	 */
 	public static function getLargeProviders() {
 		return  array(
-			new self( 'openid', 'OpenID', wfMsg( 'openid-provider-label-openid' ), '{URL}' ),
-			new self( 'google', 'Google', wfMsg( 'openid-provider-label-google' ), 'https://www.google.com/accounts/o8/id' ),
-			new self( 'yahoo', 'Yahoo', wfMsg( 'openid-provider-label-yahoo' ), 'http://yahoo.com/' ),
-			new self( 'aol', 'AOL', wfMsg( 'openid-provider-label-aol' ), 'http://openid.aol.com/{username}' )
+			new self( 'openid', 'Launchpad', wfMsg( 'openid-provider-label-openid' ), 'https://launchpad.net/~{username}' ),
 		);
 	}
 
@@ -103,22 +100,7 @@ class OpenIDProvider {
 	 */
 	public static function getSmallProviders() {
 		return array(
-			new self( 'myopenid', 'MyOpenID', wfMsg( 'openid-provider-label-other-username', 'MyOpenID' ),
-						'http://{username}.myopenid.com/' ),
-			new self( 'livejournal', 'LiveJournal', wfMsg( 'openid-provider-label-other-username', 'LiveJournal' ),
-						'http://{username}.livejournal.com/' ),
-			new self( 'vox', 'VOX', wfMsg( 'openid-provider-label-other-username', 'VOX' ),
-						'http://{username}.vox.com/' ),
-			new self( 'blogger', 'Blogger', wfMsg( 'openid-provider-label-other-username', 'Blogger' ),
-						'http://{username}.blogspot.com/' ),
-			new self( 'flickr', 'Flickr', wfMsg( 'openid-provider-label-other-username', 'Flickr' ),
-						'http://flickr.com/photos/{username}/' ),
-			new self( 'verisign', 'Verisign', wfMsg( 'openid-provider-label-other-username', 'Verisign' ),
-						'http://{username}.pip.verisignlabs.com/' ),
-			new self( 'vidoop', 'Vidoop', wfMsg( 'openid-provider-label-other-username', 'Vidoop' ),
-						'http://{username}.myvidoop.com/' ),
-			new self( 'claimid', 'ClaimID', wfMsg( 'openid-provider-label-other-username', 'ClaimID' ),
-						'http://claimid.com/{username}' )
+
 		);
 	}
 }

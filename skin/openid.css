@@ -55,6 +55,7 @@ a.openid_large_btn:focus {
 #openid_provider_google_icon { background-image: url(icons/google_large.png); }
 #openid_provider_yahoo_icon { background-image: url(icons/yahoo_large.png); }
 #openid_provider_aol_icon { background-image: url(icons/aol_large.png); }
+#openid_provider_launchpad_icon { background-image: url(icons/lp_large.png); }
 
 #openid_provider_myopenid_icon { background-image: url(icons/myopenid_small.png); }
 #openid_provider_livejournal_icon { background-image: url(icons/livejournal_small.png); }

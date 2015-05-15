@@ -350,7 +350,6 @@ class SpecialOpenIDLogin extends SpecialOpenID {
 	 */
 	function chooseName() {
 		global $wgRequest, $wgUser, $wgOut;
-
 		list( $openid, $sreg, $ax ) = $this->fetchValues();
 		if ( is_null( $openid ) ) {
 			wfDebug( "OpenID: aborting in ChooseName because identity_url is missing\n" );
