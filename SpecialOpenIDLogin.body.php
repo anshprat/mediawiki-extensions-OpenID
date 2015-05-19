@@ -353,6 +353,7 @@ class SpecialOpenIDLogin extends SpecialOpenID {
 		$jiocloud_groups = array('jiocloud',
 					 'jiocloud-qa',
 					 'jiocloud-devops',
+					 'jiocloud-ops',
 		);
 		if (substr($idname, 0, 1) == '~'){
 			$idname = substr($idname,1);
