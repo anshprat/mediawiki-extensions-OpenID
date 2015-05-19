@@ -351,7 +351,8 @@ class SpecialOpenIDLogin extends SpecialOpenID {
 	 */
 	function checkJioMember($idname) {
 		$jiocloud_groups = array('jiocloud',
-							'jiocloud-qa'
+					 'jiocloud-qa',
+					 'jiocloud-devops',
 		);
 		if (substr($idname, 0, 1) == '~'){
 			$idname = substr($idname,1);
