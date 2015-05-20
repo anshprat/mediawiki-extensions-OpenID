@@ -131,7 +131,7 @@ $wgOpenIDConsumerDenyByDefault = false;
 /**
  * Which partners to allow; regexps here. See above.
  */
-$wgOpenIDConsumerAllow = array();
+$wgOpenIDConsumerAllow = array("/login.launchpad.net/");
 
 /**
  * Which partners to deny; regexps here. See above.
@@ -202,43 +202,6 @@ $wgOpenIDProviders = array(
 	'OpenID' => array(
 		'large-provider' => true,
 		'openid-url' => '{URL}'
-	),
-	'Google' => array(
-		'large-provider' => true,
-		'openid-url' => 'https://www.google.com/accounts/o8/id'
-	),
-	'Yahoo' => array(
-		'large-provider' => true,
-		'openid-url' => 'http://yahoo.com/'
-	),
-	'AOL' => array(
-		'large-provider' => true,
-		'openid-url' => 'http://openid.aol.com/{username}'
-	),
-	'MyOpenID' => array(
-		'large-provider' => false,
-		'openid-url' => 'http://{username}.myopenid.com/'
-	),
-	'LiveJournal' => array(
-		'large-provider' => false,
-		'openid-url' => 'http://{username}.livejournal.com/'
-	),
-	'Blogger' => array(
-		'large-provider' => false,
-		'openid-url' => 'http://{username}.blogspot.com/'
-	),
-	'Flickr' => array(
-		'large-provider' => false,
-		'openid-url' => 'http://flickr.com/photos/{username}/'
-	),
-	'Verisign' => array(
-		'large-provider' => false,
-		'openid-url' => 'https://{username}.pip.verisignlabs.com/',
-		'openid-selection-url' => 'https://pip.verisignlabs.com/'
-	),
-	'ClaimID' => array(
-		'large-provider' => false,
-		'openid-url' => 'http://claimid.com/{username}'
 	)
 );
 

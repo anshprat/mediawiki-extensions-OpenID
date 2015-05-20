@@ -251,7 +251,7 @@ class SpecialOpenID extends SpecialPage {
 
 		# Make sure the user has a session!
 		$this->setupSession();
-
+		$openid_url = trim( $openid_url );
 		$auth_request = $consumer->begin( $openid_url );
 
 		// Handle failure status return values.

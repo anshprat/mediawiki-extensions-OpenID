@@ -33,6 +33,7 @@
     "openidcanceltext": "Verification of the OpenID URL was cancelled.",
     "openidfailure": "Verification failed",
     "openidfailuretext": "Verification of the OpenID URL failed.\nError message: \"$1\"",
+    "jiogrouperror": "Your username is not a part of Jiocloud groups on launchpad. Please contact your manager for inclusion",
     "openidsuccess": "Verification succeeded",
     "openidsuccesstext": "'''Successful verification and log in as user $1'''.\n\nYour OpenID is $2 .\n\nThis and optional further OpenIDs can be managed in the [[Special:Preferences#mw-prefsection-openid|OpenID tab]] of your preferences.<br />\nAn optional account password can be added in your [[Special:Preferences#mw-prefsection-personal|User profile]].",
     "openidusernameprefix": "OpenIDUser",
