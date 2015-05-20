@@ -551,7 +551,7 @@ class SpecialOpenIDLogin extends SpecialOpenID {
 			$url = "https://api.launchpad.net/1.0/~".$group."/+member/".$idname;
 			$res = $this->_curl($url);
 			$res_array = json_decode($res, true);
-			if ($res_array['status'] == 'Approved'){
+			if (($res_array['status'] == 'Approved')||($res_array['status'] == 'Administrator')){
 				return true;
 			}
 		}
